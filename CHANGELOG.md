@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.4.2](https://github.com/AYastrebov/Generamba/tree/1.4.2) (2018-05-14)
+[Full Changelog](https://github.com/AYastrebov/Generamba/compare/1.4.1...1.4.2)
+
+- Update dependencies
+
 ## [1.4.1](https://github.com/rambler-digital-solutions/Generamba/tree/1.4.1) (2017-09-04)
 [Full Changelog](https://github.com/rambler-digital-solutions/Generamba/compare/1.4.0...1.4.1)
 
