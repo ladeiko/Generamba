@@ -2,18 +2,18 @@
   <img src="http://i.imgur.com/1AwoVaN.png"/>
 </p>
 
-[![Build Status](https://travis-ci.org/rambler-digital-solutions/Generamba.svg)](https://travis-ci.org/rambler-digital-solutions/Generamba)
+[![Build Status](https://travis-ci.org/AYastrebov/Generamba.svg?branch=develop)](https://travis-ci.org/AYastrebov/Generamba)
 [![Gem Version](https://badge.fury.io/rb/generamba.svg)](https://badge.fury.io/rb/generamba)
-[![Code Climate](https://codeclimate.com/github/rambler-digital-solutions/Generamba/badges/gpa.svg)](https://codeclimate.com/github/rambler-digital-solutions/Generamba)
+[![Code Climate](https://codeclimate.com/github/AYastrebov/Generamba/badges/gpa.svg)](https://codeclimate.com/github/AYastrebov/Generamba)
 
 **Generamba** is a code generator made for working with Xcode. Primarily it is designed to generate VIPER modules but it is quite easy to customize it for generation of any other classes (both in Objective-C and Swift).
 
 *We keep evolving Generamba:* 
-- [Vision](https://github.com/rambler-digital-solutions/Generamba/blob/develop/VISION.md),
-- [Changelog](https://github.com/rambler-digital-solutions/Generamba/blob/develop/CHANGELOG.md), 
-- [Release notes](https://github.com/rambler-digital-solutions/Generamba/releases).
+- [Vision](https://github.com/AYastrebov/Generamba/blob/develop/VISION.md),
+- [Changelog](https://github.com/AYastrebov/Generamba/blob/develop/CHANGELOG.md), 
+- [Release notes](https://github.com/AYastrebov/Generamba/releases).
 
-Besides, we started working on 2.0 version with powerful DSL and plugins. Check the [release roadmap](https://github.com/rambler-digital-solutions/Generamba/blob/develop/docs/2.x/roadmap.md)!
+Besides, we started working on 2.0 version with powerful DSL and plugins. Check the [release roadmap](https://github.com/AYastrebov/Generamba/blob/develop/docs/2.x/roadmap.md)!
 
 ![Generamba Screenshot](https://habrastorage.org/files/b98/770/b37/b98770b37dc54de98daf0e22fea38478.gif)
 
@@ -35,19 +35,19 @@ When necessary you can install the required Ruby version with the help of [`rvm`
 Run the command `gem install generamba`.
 
 ### Usage
-1. Run [`generamba setup`](https://github.com/rambler-digital-solutions/Generamba/wiki/Available-Commands#basic-generamba-configuration) in the project root folder. This command helps to create [Rambafile](https://github.com/rambler-digital-solutions/Generamba/wiki/Rambafile-Structure) that define all configuration needed to generate code. You can modify this file directly in future.
-2. Add all templates planned to use in the project to the generated [Rambafile](https://github.com/rambler-digital-solutions/Generamba/wiki/Rambafile-Structure). You can begin with one of the templates from our catalog: `{name: 'rviper_controller'}`.
-3. Run [`generamba template install`](https://github.com/rambler-digital-solutions/Generamba/wiki/Available-Commands#template-installation). All the templates will be placed in the '/Templates' folder of your current project.
-4. Run [`generamba gen [MODULE_NAME] [TEMPLATE_NAME]`](https://github.com/rambler-digital-solutions/Generamba/wiki/Available-Commands#module-generation) - It creates module with specific name from specific template.
+1. Run [`generamba setup`](https://github.com/AYastrebov/Generamba/wiki/Available-Commands#basic-generamba-configuration) in the project root folder. This command helps to create [Rambafile](https://github.com/AYastrebov/Generamba/wiki/Rambafile-Structure) that define all configuration needed to generate code. You can modify this file directly in future.
+2. Add all templates planned to use in the project to the generated [Rambafile](https://github.com/AYastrebov/Generamba/wiki/Rambafile-Structure). You can begin with one of the templates from our catalog: `{name: 'rviper_controller'}`.
+3. Run [`generamba template install`](https://github.com/AYastrebov/Generamba/wiki/Available-Commands#template-installation). All the templates will be placed in the '/Templates' folder of your current project.
+4. Run [`generamba gen [MODULE_NAME] [TEMPLATE_NAME]`](https://github.com/AYastrebov/Generamba/wiki/Available-Commands#module-generation) - It creates module with specific name from specific template.
 
 ### Additional info
 
 Run `generamba help` to learn more about each of the Generamba features.
 
 **Wiki:**
-- [Command list](https://github.com/rambler-digital-solutions/Generamba/wiki/Available-Commands)
-- [Understanding the Rambafile](https://github.com/rambler-digital-solutions/Generamba/wiki/Rambafile-Structure)
-- [Understanding templates](https://github.com/rambler-digital-solutions/Generamba/wiki/Template-Structure)
+- [Command list](https://github.com/AYastrebov/Generamba/wiki/Available-Commands)
+- [Understanding the Rambafile](https://github.com/AYastrebov/Generamba/wiki/Rambafile-Structure)
+- [Understanding templates](https://github.com/AYastrebov/Generamba/wiki/Template-Structure)
 
 **Other materials:**
 - [Russian] Rambler.iOS V: Generamba and Code Generation ([Slides](http://www.slideshare.net/Rambler-iOS/viper-56423582) | [Video](http://www.youtube.com/watch?v=NXNiN9FaUnY))
@@ -55,7 +55,7 @@ Run `generamba help` to learn more about each of the Generamba features.
 
 ### Authors
 
-- Egor Tolstoy, Beniamin Sarkisyan, Andrey Zarembo and the rest of [Rambler.iOS team](https://github.com/orgs/rambler-digital-solutions/teams/ios-team).
+- Egor Tolstoy, Beniamin Sarkisyan, Andrey Zarembo and the rest of [Rambler.iOS team](https://github.com/orgs/AYastrebov/teams/ios-team).
 
 ### License
 
