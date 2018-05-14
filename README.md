@@ -26,19 +26,27 @@ Besides, we started working on 2.0 version with powerful DSL and plugins. Check 
 
 ### Installation
 
-> Ruby 2.2 or later version is required. To check your current Ruby version run this command in terminal:
+> Ruby 2.3 or later version is required. To check your current Ruby version run this command in terminal:
 ```bash
 $ ruby --version
 ```
 When necessary you can install the required Ruby version with the help of [`rvm`](http://octopress.org/docs/setup/rvm/) or [`rbenv`](http://octopress.org/docs/setup/rbenv/).
 
-Run the command `gem install generamba`.
+In your `Gemfile` add
+
+```bash
+gem "generamba", :git => 'https://github.com/AYastrebov/Generamba.git', :tag => '1.4.2'
+```
+
+Then just install it with
+
+`bundle install`
 
 ### Usage
-1. Run [`generamba setup`](https://github.com/AYastrebov/Generamba/wiki/Available-Commands#basic-generamba-configuration) in the project root folder. This command helps to create [Rambafile](https://github.com/AYastrebov/Generamba/wiki/Rambafile-Structure) that define all configuration needed to generate code. You can modify this file directly in future.
+1. Run [`bundle exec generamba setup`](https://github.com/AYastrebov/Generamba/wiki/Available-Commands#basic-generamba-configuration) in the project root folder. This command helps to create [Rambafile](https://github.com/AYastrebov/Generamba/wiki/Rambafile-Structure) that define all configuration needed to generate code. You can modify this file directly in future.
 2. Add all templates planned to use in the project to the generated [Rambafile](https://github.com/AYastrebov/Generamba/wiki/Rambafile-Structure). You can begin with one of the templates from our catalog: `{name: 'rviper_controller'}`.
-3. Run [`generamba template install`](https://github.com/AYastrebov/Generamba/wiki/Available-Commands#template-installation). All the templates will be placed in the '/Templates' folder of your current project.
-4. Run [`generamba gen [MODULE_NAME] [TEMPLATE_NAME]`](https://github.com/AYastrebov/Generamba/wiki/Available-Commands#module-generation) - It creates module with specific name from specific template.
+3. Run [`bundle exec generamba template install`](https://github.com/AYastrebov/Generamba/wiki/Available-Commands#template-installation). All the templates will be placed in the '/Templates' folder of your current project.
+4. Run [`bundle exec generamba gen [MODULE_NAME] [TEMPLATE_NAME]`](https://github.com/AYastrebov/Generamba/wiki/Available-Commands#module-generation) - It creates module with specific name from specific template.
 
 ### Additional info
 
