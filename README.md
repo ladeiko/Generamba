@@ -6,6 +6,8 @@
 [![Gem Version](https://badge.fury.io/rb/generamba.svg)](https://badge.fury.io/rb/generamba)
 [![Code Climate](https://codeclimate.com/github/AYastrebov/Generamba/badges/gpa.svg)](https://codeclimate.com/github/AYastrebov/Generamba)
 
+**Clone** of [https://github.com/AYastrebov/Generamba](https://github.com/AYastrebov/Generamba)
+
 **Generamba** is a code generator made for working with Xcode. Primarily it is designed to generate VIPER modules but it is quite easy to customize it for generation of any other classes (both in Objective-C and Swift).
 
 *We keep evolving Generamba:* 
@@ -32,15 +34,11 @@ $ ruby --version
 ```
 When necessary you can install the required Ruby version with the help of [`rvm`](http://octopress.org/docs/setup/rvm/) or [`rbenv`](http://octopress.org/docs/setup/rbenv/).
 
-In your `Gemfile` add
+In your terminal run (install *specific_install* gem if required by ```gem install specific_install```):
 
 ```bash
-gem "generamba", :git => 'https://github.com/AYastrebov/Generamba.git', :tag => '1.4.2'
+gem specific_install -l https://github.com/ladeiko/Generamba.git
 ```
-
-Then just install it with
-
-`bundle install`
 
 ### Usage
 1. Run [`bundle exec generamba setup`](https://github.com/AYastrebov/Generamba/wiki/Available-Commands#basic-generamba-configuration) in the project root folder. This command helps to create [Rambafile](https://github.com/AYastrebov/Generamba/wiki/Rambafile-Structure) that define all configuration needed to generate code. You can modify this file directly in future.
