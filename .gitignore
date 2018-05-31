@@ -2,3 +2,5 @@
 .rakeTasks
 encodings.xml
 Gemfile.lock
+/.vscode/
+/pkg/

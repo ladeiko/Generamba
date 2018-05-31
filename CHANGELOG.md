@@ -1,7 +1,14 @@
 # Change Log
 
-## [1.4.2](https://github.com/AYastrebov/Generamba/tree/1.4.2) (2018-05-14)
-[Full Changelog](https://github.com/AYastrebov/Generamba/compare/1.4.1...1.4.2)
+## [1.5.0](https://github.com/ladeiko/Generamba/tree/1.5.0) (2018-05-31)
+[Full Changelog](https://github.com/ladeiko/Generamba/compare/1.4.2...1.5.0)
+
+### Fixed
+
+* 'temporary folder already exists' crash while installing templates
+
+## [1.4.2](https://github.com/ladeiko/Generamba/tree/1.4.2) (2018-05-14)
+[Full Changelog](https://github.com/ladeiko/Generamba/compare/1.4.1...1.4.2)
 
 - Update dependencies
 

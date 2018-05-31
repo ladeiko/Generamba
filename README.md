@@ -2,11 +2,10 @@
   <img src="http://i.imgur.com/1AwoVaN.png"/>
 </p>
 
-[![Build Status](https://travis-ci.org/AYastrebov/Generamba.svg?branch=develop)](https://travis-ci.org/AYastrebov/Generamba)
-[![Gem Version](https://badge.fury.io/rb/generamba.svg)](https://badge.fury.io/rb/generamba)
-[![Code Climate](https://codeclimate.com/github/AYastrebov/Generamba/badges/gpa.svg)](https://codeclimate.com/github/AYastrebov/Generamba)
+**Fork** of [https://github.com/AYastrebov/Generamba](https://github.com/AYastrebov/Generamba)
 
-**Clone** of [https://github.com/AYastrebov/Generamba](https://github.com/AYastrebov/Generamba)
+[![Build Status](https://travis-ci.org/ladeiko/Generamba.svg?branch=develop)](https://travis-ci.org/AYastrebov/Generamba)
+[![Gem Version](https://badge.fury.io/rb/generamba.svg)](https://badge.fury.io/rb/generamba)
 
 **Generamba** is a code generator made for working with Xcode. Primarily it is designed to generate VIPER modules but it is quite easy to customize it for generation of any other classes (both in Objective-C and Swift).
 
