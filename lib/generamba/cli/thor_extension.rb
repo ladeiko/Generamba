@@ -9,7 +9,7 @@ module Generamba::CLI
       end
 
       def ask_non_empty_string(message, description = 'Value should be nonempty string')
-        return ask_with_validation(message,->(value){value.length > 0 },description)
+        return ask_with_validation(message,->(value){ value != nil && value.length > 0 },description)
       end
 
       def ask_loop(message)
