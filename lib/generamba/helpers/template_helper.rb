@@ -9,7 +9,7 @@ module Generamba
                        .join(template_name),
         Pathname.new(GlobalTemplates::path)
                 .join(template_name + RAMBASPEC_EXTENSION)
-      ].detect { |p| p.lstat File.exists?() }
+      ].detect { |p| p.lstat. File.exists?() }
     end
 
     # Returns a file path for a specific template .rambaspec file
