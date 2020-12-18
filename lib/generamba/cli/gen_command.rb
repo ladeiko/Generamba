@@ -1,7 +1,9 @@
 require 'thor'
+require "tty-prompt"
 require 'generamba/helpers/print_table.rb'
 require 'generamba/helpers/rambafile_validator.rb'
 require 'generamba/helpers/xcodeproj_helper.rb'
+require 'generamba/helpers/global_templates.rb'
 require 'generamba/helpers/dependency_checker.rb'
 require 'generamba/helpers/gen_command_table_parameters_formatter.rb'
 require 'generamba/helpers/module_validator.rb'
@@ -24,15 +26,13 @@ module Generamba::CLI
     method_option :test_group_path, :desc => 'Specifies a location in Xcode groups for new test files'
     method_option :test_path, :desc => 'Specifies a location (both in the filesystem and Xcode) for new test files'
     method_option :custom_parameters, :type => :hash, :default => {}, :desc => 'Specifies extra parameters in format `key1:value1 key2:value2` for usage during code generation'
-    def gen(module_name, template_name)
+    def gen(module_name = nil, template_name = nil)
       does_rambafile_exist = Dir[RAMBAFILE_NAME].count > 0
 
       unless does_rambafile_exist
-        puts('Rambafile not found! Run `generamba_x setup` in the working directory instead!'.red)
+        puts('Rambafile not found! Run `generamba setup` in the working directory instead!'.red)
         return
       end
-
-      GlobalTemplates.update()
 
       rambafile_validator = Generamba::RambafileValidator.new
       rambafile_validator.validate(RAMBAFILE_NAME)
@@ -41,6 +41,30 @@ module Generamba::CLI
       setup_username_command.setup_username
 
       rambafile = YAML.load_file(RAMBAFILE_NAME)
+
+      if rambafile[COMPANY_KEY].nil?
+        rambafile[COMPANY_KEY] = ''
+      end
+
+      Generamba::GlobalTemplates.update
+
+      if module_name == nil
+        prompt = TTY::Prompt.new
+        module_name = prompt.ask("Enter the name of module?") do |q|
+          q.required true
+          q.validate /^[A-Z]\w*$/
+        end
+      end
+
+      templates = rambafile[TEMPLATES_KEY] || []
+      templates = templates.concat(Generamba::GlobalTemplates.templates.map { |name| { "name" => name, "path" => Generamba::GlobalTemplates.path } }).sort_by { |t| t["name"] }
+      rambafile[TEMPLATES_KEY] = templates
+
+      if template_name == nil
+        prompt = TTY::Prompt.new
+        choices = templates.map { |t| t["name"] }
+        template_name = prompt.select("Select template?", choices, per_page: choices.count)
+      end
 
       code_module = CodeModule.new(module_name, rambafile, options)
 

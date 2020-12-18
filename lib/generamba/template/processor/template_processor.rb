@@ -59,7 +59,7 @@ module Generamba
 
       terminator = CatalogTerminator.new
       terminator.remove_all_catalogs
-      puts('Updating shared generamba_x-catalog specs...')
+      puts('Updating shared generamba-catalog specs...')
       @catalog_downloader.download_catalog(GENERAMBA_CATALOG_NAME, RAMBLER_CATALOG_REPO)
 
       return unless catalogs != nil && catalogs.count > 0

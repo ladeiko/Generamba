@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'generamba/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'generamba_x'
+  spec.name          = 'generamba'
   spec.version       = Generamba::VERSION
   spec.authors       = ['Siarhei Ladzeika']
   spec.email         = 'sergey.ladeiko@gmail.com'
@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.executables   = ['generamba_x']
+  spec.executables   = ['generamba']
   spec.require_paths = ['lib']
 
   spec.required_ruby_version = '>= 2.3'

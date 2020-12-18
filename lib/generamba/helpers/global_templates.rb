@@ -15,6 +15,10 @@ module Generamba
 
     end
 
+    def self.path
+      Pathname.new(ENV['HOME']).join(GENERAMBA_HOME_DIR).join(GLOBAL_TEMPLATES_DIR)
+    end
+
     def self.templates
       global_templates_path = Pathname.new(ENV['HOME'])
                                       .join(GENERAMBA_HOME_DIR)

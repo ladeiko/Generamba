@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'generamba_x'
+require 'generamba'
 
 Generamba::CLI::Application.start(ARGV)

@@ -107,14 +107,14 @@ module Generamba::CLI
 
       PrintTable.print_values(
           values: properties,
-          title: 'Summary for generamba_x setup'
+          title: 'Summary for generamba setup'
       )
 
       Generamba::RambafileGenerator.create_rambafile(properties)
       if should_add_templates
-        puts('Rambafile successfully created! Now run `generamba_x template install`.'.green)
+        puts('Rambafile successfully created! Now run `generamba template install`.'.green)
       else
-        puts('Rambafile successfully created!\n Go on and find some templates in our catalog using `generamba_x template list` command.\n Add any of them to the Rambafile and run `generamba_x template install`.'.green)
+        puts('Rambafile successfully created!\n Go on and find some templates in our catalog using `generamba template list` command.\n Add any of them to the Rambafile and run `generamba template install`.'.green)
       end
 
     end
