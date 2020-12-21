@@ -61,10 +61,15 @@ module Generamba
     #
     # @return [Pathname] A path to a template, if found
     def browse_catalog_for_a_template(catalog_path, template_name)
-      template_path = catalog_path.join(template_name)
+      template_path_as_folder = catalog_path.join(template_name)
+      template_path_as_spec = catalog_path.join(template_name + RAMBASPEC_EXTENSION)
 
-      if Dir.exist?(template_path)
-        return template_path
+      if File.exist?(template_path_as_spec)
+        return catalog_path
+      end
+
+      if Dir.exist?(template_path_as_folder)
+        return template_path_as_folder
       end
 
       return nil

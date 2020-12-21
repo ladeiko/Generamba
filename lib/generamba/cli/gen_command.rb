@@ -3,7 +3,6 @@ require "tty-prompt"
 require 'generamba/helpers/print_table.rb'
 require 'generamba/helpers/rambafile_validator.rb'
 require 'generamba/helpers/xcodeproj_helper.rb'
-require 'generamba/helpers/global_templates.rb'
 require 'generamba/helpers/dependency_checker.rb'
 require 'generamba/helpers/gen_command_table_parameters_formatter.rb'
 require 'generamba/helpers/module_validator.rb'
@@ -46,8 +45,6 @@ module Generamba::CLI
         rambafile[COMPANY_KEY] = ''
       end
 
-      Generamba::GlobalTemplates.update
-
       if module_name == nil
         prompt = TTY::Prompt.new
         module_name = prompt.ask("Enter the name of module?") do |q|
@@ -57,7 +54,7 @@ module Generamba::CLI
       end
 
       templates = rambafile[TEMPLATES_KEY] || []
-      templates = templates.concat(Generamba::GlobalTemplates.templates.map { |name| { "name" => name, "path" => Generamba::GlobalTemplates.path } }).sort_by { |t| t["name"] }
+      templates = templates.concat(TemplateHelper.global_templates.map { |name| { "name" => name } }).sort_by { |t| t["name"] }
       rambafile[TEMPLATES_KEY] = templates
 
       if template_name == nil

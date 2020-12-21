@@ -3,13 +3,34 @@ module Generamba
   class TemplateHelper
 
     def self.detect_template_location(template_name)
-      [
-        Pathname.new(Dir.getwd)
-                       .join(TEMPLATES_FOLDER)
-                       .join(template_name),
-        Pathname.new(GlobalTemplates::path)
-                .join(template_name + RAMBASPEC_EXTENSION)
-      ].detect { |p| p.lstat. File.exists?() }
+
+      catalogs_path = Pathname.new(ENV['HOME'])
+                              .join(GENERAMBA_HOME_DIR)
+                              .join(CATALOGS_DIR)
+
+      catalog_template_list_helper = CatalogTemplateListHelper.new
+
+      catalogs = catalogs_path.children.select { |child|
+        child.directory? && child.split.last.to_s[0] != '.'
+      }
+
+      catalog = ([
+        Pathname.new(Dir.getwd).join(TEMPLATES_FOLDER),
+      ] + catalogs)
+       .detect do |catalog_path|
+        next if !catalog_path.exist?
+        templates = catalog_template_list_helper.obtain_all_templates_from_a_catalog(catalog_path)
+        templates.include?(template_name)
+      end
+
+      return nil if catalog == nil
+
+      path = catalog_template_list_helper.template_path(catalog, template_name)
+
+      error_description = "Cannot find template named '#{template_name}'! Add it to the Rambafile and run *generamba template install*".red
+      raise StandardError, error_description if path.nil?
+
+      path
     end
 
     # Returns a file path for a specific template .rambaspec file
@@ -20,11 +41,6 @@ module Generamba
       template_path = self.obtain_path(template_name)
       spec_path = template_path.join(template_name + RAMBASPEC_EXTENSION)
 
-      if !File.exists?(spec_path)
-        candidate = Pathname.new(GlobalTemplates::path).join(template_name + RAMBASPEC_EXTENSION)
-        File.exists?(spec_path)
-      end
-
       spec_path
     end
 
@@ -33,21 +49,28 @@ module Generamba
     #
     # @return [Pathname]
     def self.obtain_path(template_name)
-
-      path = Pathname.new(Dir.getwd)
-                     .join(TEMPLATES_FOLDER)
-                     .join(template_name)
-
-      if !File.exists?(path)
-        GlobalTemplates::path
-      end
-
-      path = GlobalTemplates::path
+      path = self.detect_template_location(template_name)
 
       error_description = "Cannot find template named #{template_name}! Add it to the Rambafile and run *generamba template install*".red
-      raise StandardError, error_description unless path.exist?
+      raise StandardError, error_description unless path != nil && path.exist?
 
       path
     end
+
+    def self.global_templates
+
+      downloader = CatalogDownloader.new
+      catalog_template_list_helper = CatalogTemplateListHelper.new
+
+      templates = []
+      catalog_paths = downloader.update_all_catalogs_and_return_filepaths(true)
+      catalog_paths.each do |path|
+        templates += catalog_template_list_helper.obtain_all_templates_from_a_catalog(path)
+        templates = templates.uniq
+      end
+
+      templates.sort
+    end
+
   end
 end

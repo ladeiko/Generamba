@@ -6,6 +6,15 @@ module Generamba
   # Currently it has methods for obtaining and saving username, later it may be improved to something more general.
   class UserPreferences
 
+    def self.obtain_custom_catalogs_repos
+      path = obtain_user_preferences_path
+
+      file_contents = open(path).read
+      preferences = file_contents.empty? ? {} : YAML.load(file_contents).to_hash
+
+      return preferences[CATALOGS_KEY]
+    end
+
     def self.obtain_username
       path = obtain_user_preferences_path
 

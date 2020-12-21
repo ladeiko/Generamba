@@ -21,19 +21,15 @@ module Generamba
       # We always clear previously installed templates to avoid conflicts in different versions
       clear_installed_templates
 
-      templates = rambafile[TEMPLATES_KEY]
-
-      if !templates || templates.count == 0
-        puts 'You must specify at least one template in Rambafile under the key *templates*'.red
-        return
-      end
+      templates = rambafile[TEMPLATES_KEY] || []
 
       # Mapping hashes to model objects
-      templates = rambafile[TEMPLATES_KEY].map { |template_hash|
+      templates = templates.map { |template_hash|
         Generamba::TemplateDeclaration.new(template_hash)
       }
 
-      catalogs = rambafile[CATALOGS_KEY]
+      catalogs = rambafile[CATALOGS_KEY] || []
+
       # If there is at least one template from catalogs, we should update our local copy of the catalog
       update_catalogs_if_needed(catalogs, templates)
 
@@ -59,8 +55,11 @@ module Generamba
 
       terminator = CatalogTerminator.new
       terminator.remove_all_catalogs
-      puts('Updating shared generamba-catalog specs...')
-      @catalog_downloader.download_catalog(GENERAMBA_CATALOG_NAME, RAMBLER_CATALOG_REPO)
+      puts('Updating shared generamba-catalogs specs...')
+
+      catalogs.each do |catalog_url|
+        @catalog_downloader.download_catalog(catalog_url.split('/').last, catalog_url)
+      end
 
       return unless catalogs != nil && catalogs.count > 0
 

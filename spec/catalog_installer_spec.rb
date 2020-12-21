@@ -8,7 +8,7 @@ describe 'method install_template' do
     catalog_path = Pathname.new(ENV['HOME'])
                        .join(Generamba::GENERAMBA_HOME_DIR)
                        .join(Generamba::CATALOGS_DIR)
-                       .join(Generamba::GENERAMBA_CATALOG_NAME)
+                       .join(Generamba::CATALOG_REPOS[0].split('/').last)
     template_path = catalog_path.join(template_name)
 
     template_install_path = Pathname.new(Generamba::TEMPLATES_FOLDER)
@@ -34,7 +34,7 @@ describe 'method install_template' do
     shared_catalog_path = Pathname.new(ENV['HOME'])
                        .join(Generamba::GENERAMBA_HOME_DIR)
                        .join(Generamba::CATALOGS_DIR)
-                       .join(Generamba::GENERAMBA_CATALOG_NAME)
+                       .join(Generamba::CATALOG_REPOS[0].split('/').last)
     catalog_path = Pathname.new(ENV['HOME'])
                        .join(Generamba::GENERAMBA_HOME_DIR)
                        .join(Generamba::CATALOGS_DIR)

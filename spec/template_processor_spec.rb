@@ -43,7 +43,7 @@ describe 'TemplateProcessor' do
       processor = Generamba::TemplateProcessor.new(downloader, installer_factory)
       processor.install_templates(rambafile)
 
-      expect(downloader).to have_received(:download_catalog).with(Generamba::GENERAMBA_CATALOG_NAME, Generamba::RAMBLER_CATALOG_REPO)
+      expect(downloader).to have_received(:download_catalog).with(Generamba::CATALOG_REPOS[0].split('/').last, CATALOG_REPOS[0])
     end
 
     it 'should update other catalogs if needed' do
